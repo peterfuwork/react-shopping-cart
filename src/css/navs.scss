@@ -1,0 +1,12 @@
+.navs {
+    background-color:#222;
+    .link {
+      padding: 1rem;
+      text-decoration: none;
+      color: #ccc;
+      display: table;
+      &:hover {
+        color:$primary-color;
+      }
+    }
+  }
