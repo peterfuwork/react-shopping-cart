@@ -10,7 +10,7 @@ class App extends Component {
       products: [
           { id: 40, img:"https://dl.dropboxusercontent.com/s/m9tgkifsja610qd/favorite_animal_spring.jpg?dl=0", name: 'Mediocre Iron Watch', priceInCents: 399.99, quantity: 1 },
           { id: 41, img:"https://dl.dropboxusercontent.com/s/tm5lwhzuu7b2dlu/favorite_animal_autumn.jpg?dl=0", name: 'Heavy Duty Concrete Plate', priceInCents: 499.99, quantity: 30 },
-          { id: 42, img:"https://dl.dropboxusercontent.com/s/rh3kg626xxdego6/favorite_animal_winter.jpg?dl=0", name: 'Intelligent Paper Knife', priceInCents: 1999.99, quantity: 18 },
+          { id: 42, img:"https://dl.dropboxusercontent.com/s/rh3kg626xxdego6/favorite_animal_winter.jpg?dl=0", name: 'Intelligent Paper Knife', priceInCents: 1999.99, quantity: 0 },
           { id: 43, img:"https://dl.dropboxusercontent.com/s/ceb7i4rs72gl73m/favorite_animal_summer.jpg?dl=0", name: 'Small Aluminum Keyboard', priceInCents: 2500.99, quantity: 27 },
           { id: 44, img:"https://dl.dropboxusercontent.com/s/omenz4c6b31ryfu/favorite_place_spring.jpg?dl=0", name: 'Practical Copper Plate', priceInCents: 1000.99, quantity: 1 },
           { id: 45, img:"https://dl.dropboxusercontent.com/s/lt6xuqrko2qhwxg/favorite_place_autumn.jpg?dl=0", name: 'Awesome Bronze Pants', priceInCents: 399.99, quantity: 1 },

@@ -9,7 +9,8 @@ const ProductItems = (props) => {
                     onClickAdd={props.onClickAdd} 
                     product={product}
                     shoppingCart={props.shoppingCart}
-                    key={product.id} />
+                    key={product.id}
+                    inputQuantity={props.inputQuantity} />
             );
         });
 
@@ -38,7 +39,10 @@ const ProductItems = (props) => {
                         <div className="text-center">
                             <form className="quantityForm">
                                 <input
+                                    className="quantityInput"
                                     type="number"
+                                    min="1"
+                                    max="10"
                                     placeholder="Quantity"
                                     value={props.inputQuantity}
                                     onChange={props.onChangeQuantity} />
