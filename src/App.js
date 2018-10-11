@@ -7,46 +7,45 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      items: [
-        { id: 1, product: { id: 40, img:"https://via.placeholder.com/500x500", name: 'Mediocre Iron Watch', priceInCents: 399.99 }, quantity: 1 },
-        { id: 2, product: { id: 41, img:"https://via.placeholder.com/500x500", name: 'Heavy Duty Concrete Plate', priceInCents: 499.99 }, quantity: 2 },
-        { id: 3, product: { id: 42, img:"https://via.placeholder.com/500x500", name: 'Intelligent Paper Knife', priceInCents: 1999.99 }, quantity: 1 },
-        { id: 4, product: { id: 43, img:"https://via.placeholder.com/500x500", name: 'Heavy Duty Concrete Plate', priceInCents: 499.99 }, quantity: 2 },
-        { id: 5, product: { id: 44, img:"https://via.placeholder.com/500x500", name: 'Intelligent Paper Knife', priceInCents: 1999.99 }, quantity: 1 },
-        { id: 6, product: { id: 45, img:"https://via.placeholder.com/500x500", name: 'Heavy Duty Concrete Plate', priceInCents: 499.99 }, quantity: 2 },
-        { id: 7, product: { id: 46, img:"https://via.placeholder.com/500x500", name: 'Intelligent Paper Knife', priceInCents: 1999.99 }, quantity: 1 },
-        { id: 8, product: { id: 47, img:"https://via.placeholder.com/500x500", name: 'Heavy Duty Concrete Plate', priceInCents: 499.99 }, quantity: 2 },
-        { id: 9, product: { id: 48, img:"https://via.placeholder.com/500x500", name: 'Intelligent Paper Knife', priceInCents: 1999.99 }, quantity: 1 },
-        { id: 10, product: { id: 49, img:"https://via.placeholder.com/500x500", name: 'Heavy Duty Concrete Plate', priceInCents: 499.99 }, quantity: 2 },
-        { id: 11, product: { id: 50, img:"https://via.placeholder.com/500x500", name: 'Intelligent Paper Knife', priceInCents: 1999.99 }, quantity: 1 },
-        { id: 12, product: { id: 51, img:"https://via.placeholder.com/500x500", name: 'Heavy Duty Concrete Plate', priceInCents: 499.99 }, quantity: 2 },
-        { id: 13, product: { id: 52, img:"https://via.placeholder.com/500x500", name: 'Intelligent Paper Knife', priceInCents: 1999.99 }, quantity: 1 },
-        { id: 14, product: { id: 53, img:"https://via.placeholder.com/500x500", name: 'Heavy Duty Concrete Plate', priceInCents: 499.99 }, quantity: 2 },
-        { id: 15, product: { id: 54, img:"https://via.placeholder.com/500x500", name: 'Intelligent Paper Knife', priceInCents: 1999.99 }, quantity: 1 },
+      products: [
+          { id: 40, img:"https://dl.dropboxusercontent.com/s/m9tgkifsja610qd/favorite_animal_spring.jpg?dl=0", name: 'Mediocre Iron Watch', priceInCents: 399.99, quantity: 1 },
+          { id: 41, img:"https://dl.dropboxusercontent.com/s/tm5lwhzuu7b2dlu/favorite_animal_autumn.jpg?dl=0", name: 'Heavy Duty Concrete Plate', priceInCents: 499.99, quantity: 30 },
+          { id: 42, img:"https://dl.dropboxusercontent.com/s/rh3kg626xxdego6/favorite_animal_winter.jpg?dl=0", name: 'Intelligent Paper Knife', priceInCents: 1999.99, quantity: 18 },
+          { id: 43, img:"https://dl.dropboxusercontent.com/s/ceb7i4rs72gl73m/favorite_animal_summer.jpg?dl=0", name: 'Small Aluminum Keyboard', priceInCents: 2500.99, quantity: 27 },
+          { id: 44, img:"https://dl.dropboxusercontent.com/s/omenz4c6b31ryfu/favorite_place_spring.jpg?dl=0", name: 'Practical Copper Plate', priceInCents: 1000.99, quantity: 1 },
+          { id: 45, img:"https://dl.dropboxusercontent.com/s/lt6xuqrko2qhwxg/favorite_place_autumn.jpg?dl=0", name: 'Awesome Bronze Pants', priceInCents: 399.99, quantity: 1 },
+          { id: 46, img:"https://dl.dropboxusercontent.com/s/bmx93x3vd4nfq1b/favorite_place_summer.jpg?dl=0", name: 'Intelligent Leather Clock', priceInCents: 2999.99, quantity: 27 },
+          { id: 47, img:"https://dl.dropboxusercontent.com/s/t1lnf1u1wyj551x/favorite_place_winter.jpg?dl=0", name: 'Ergonomic Bronze Lamp', priceInCents: 40000.99, quantity: 1 },
+          { id: 48, img:"https://dl.dropboxusercontent.com/s/c3chx84zxf3yg5r/favorite_activity_summer.jpg?dl=0", name: 'Awesome Leather Shoes', priceInCents: 3990.99, quantity: 13 },
       ],
       shoppingCart:[],
-      total:0
+      total: 0
     }
   }
 
-  onClickAdd = (e, item) => {
+  onClickAdd = (e, {id,img,name,priceInCents,quantity}) => {
     e.preventDefault();
+    var newItem = {
+      id,
+      img,
+      name,
+      priceInCents,
+      quantity
+    }
     this.setState({
-      shoppingCart: [...this.state.shoppingCart, item],
-      total: this.state.total + item.product.priceInCents,
+      shoppingCart: [...this.state.shoppingCart, newItem],
+      total: this.state.total + newItem.priceInCents,
     })
   }
 
-  onClickDelete = (e, item, i) => {
+  onClickDelete = (e, product, i) => {
     e.preventDefault();
     var array = [...this.state.shoppingCart];
-    var i = array.indexOf(item);
+    var i = array.indexOf(product);
     if (i > -1) {
       array.splice(i, 1);
     }
-    var newTotal = this.state.total - item.product.priceInCents;
-    console.log('newTotal',newTotal);
-    console.log('total',this.state.total);
+    var newTotal = this.state.total - product.priceInCents;
     this.setState({
       shoppingCart: array,
       total: newTotal
@@ -58,12 +57,12 @@ class App extends Component {
       <div className="App">
         <ProductHeader />
         <ProductItems 
-          items={this.state.items} 
+          products={this.state.products} 
           onClickAdd={this.onClickAdd}
-          onClickDelete={this.onClickDelete} 
+          onClickDelete={this.onClickDelete}
+          onInputChange={this.onInputChange}
           shoppingCart={this.state.shoppingCart}
-          total={this.state.total}
-          quantity={this.state.quantity} />
+          total={this.state.total} />
         <ProductFooter />
       </div>
     );

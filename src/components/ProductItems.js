@@ -3,26 +3,27 @@ import ProductItem from './ProductItem';
 import CartItems from './CartItems';
 
 const ProductItems = (props) => {
-    
-        const products = props.items.map((item) => {
+        const products = props.products.map((product) => {
             return (
                 <ProductItem 
                     onClickAdd={props.onClickAdd} 
-                    item={item}
+                    product={product}
                     shoppingCart={props.shoppingCart}
-                    key={item.id} />
+                    key={product.id} />
             );
         });
 
-        const selectedItems = props.shoppingCart.map((item, i) => {
+        const selectedItems = props.shoppingCart.map((product, i) => {
             return (
                 <CartItems
                     onClickDelete={props.onClickDelete}
-                    item={item}
+                    product={product}
+                    shoppingCart={props.shoppingCart}
                     key={i} />
             );
         });
 
+        
         return (
             <div className="container-area">
                 <h1>Product Items</h1>
@@ -34,6 +35,14 @@ const ProductItems = (props) => {
                     </section>
                     <section className="col-sm-4">
                         <div className="row">
+                        <div className="text-center">
+                            <form>
+                                <input
+                                    type="text"
+                                    placeholder="quantity" />
+                                <input type="button" value="add" />
+                            </form>
+                        </div>
                             {selectedItems}
                         </div>
                         <div className="total-Wrapper">
