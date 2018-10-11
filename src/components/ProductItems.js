@@ -34,7 +34,7 @@ const ProductItems = (props) => {
                             {products}
                         </div>
                     </section>
-                    <section className="col-sm-4">
+                    <section className="col-sm-4 shoppingCartPanel">
                         <div className="row">
                         <div className="text-center">
                             <form className="quantityForm">
@@ -48,7 +48,9 @@ const ProductItems = (props) => {
                                     onChange={props.onChangeQuantity} />
                             </form>
                         </div>
+                        <div class="col-sm-12">
                             {selectedItems}
+                        </div>
                         </div>
                         <div className="total-Wrapper">
                             <span className="total-title">Total:&nbsp;</span>

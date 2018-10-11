@@ -9,11 +9,81 @@
     @media(max-width:767px) {
       margin: 0 1rem;
     }
-    .quantityForm {
-      font-size: 1.4rem;
-      margin: 1rem 0;
-      .quantityInput {
-        width: 80%;
+    .shoppingCartPanel {
+      position:relative;
+      top:0;
+      right:0;
+      z-index: 1;
+      background-color: #ffe;
+      border: 1px solid #ccc;
+      &.fixed {
+        position:fixed;
+      }
+      .quantityForm {
+        font-size: 1.4rem;
+        margin: 1rem 0;
+        .quantityInput {
+          width: 80%;
+        }
+      }
+      .shoppingCartItem {
+        display: flex;
+        flex-direction: row;
+        border-top: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+        margin: 0 .5rem;
+        
+        &:last-Child {
+          border-bottom: 1px solid #ccc;
+        }
+        @media(max-width:767px) {
+          justify-content: flex-start;
+        }
+        .delete-btn {
+          display: flex;
+          text-decoration: none;
+          border: 1px solid #ccc;
+          justify-content: center;
+          align-items: center;
+          color: #ccc;
+          width: 1.5rem;
+          height: 1.5rem;
+          margin: 0 .3rem;
+          padding: .2rem;
+          &:hover {
+            color:#000;
+            border:1px solid #000;
+          }
+        }
+        .img {
+          width: 50px;
+          height: 50px;
+        }
+        
+        .name{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 1rem;
+        }
+        .price {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: .6rem;
+        }
+        .quantity {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color:red;
+          font-size: .3rem;
+          padding: 0 .5rem;
+        }
       }
     }
     .collection-item {
@@ -22,6 +92,20 @@
         border:1px solid #ccc;
         display: flex;
         flex-direction: column;
+        .image-wrapper {
+          overflow: hidden;
+          img {
+            transition: .5s;
+            cursor: pointer;
+            &:hover {
+              -webkit-transform: scale(1.1); /* WebKit */
+              -moz-transform: scale(1.1); /* Mozilla */
+              -o-transform: scale(1.1); /* Opera */
+              -ms-transform: scale(1.1); /* Internet Explorer */
+              transform: scale(1.1); /* CSS3 */
+            }
+          }
+        }
         .info {
           font-size:1rem;
           padding: 1rem;
@@ -71,62 +155,6 @@
         &:nth-child(3n+1){
           clear:left;
         }
-      }
-    }
-    .shoppingCartItem {
-      display: flex;
-      flex-direction: row;
-      border-top: 1px solid #ccc;
-      border-left: 1px solid #ccc;
-      border-right: 1px solid #ccc;
-      padding: 1rem;
-      justify-content: center;
-      align-items: center;
-      @media(max-width:767px) {
-        justify-content: flex-start;
-      }
-      .delete-btn {
-        display: flex;
-        text-decoration: none;
-        border: 1px solid #ccc;
-        justify-content: center;
-        align-items: center;
-        color: #ccc;
-        width: 1.5rem;
-        height: 1.5rem;
-        margin: 0 .3rem;
-        padding: .2rem;
-        &:hover {
-          color:#000;
-          border:1px solid #000;
-        }
-      }
-      .img {
-        width: 50px;
-        height: 50px;
-      }
-      &:last-Child {
-        border-bottom: 1px solid #ccc;
-      }
-      .name{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 1rem;
-      }
-      .price {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: .8rem;
-      }
-      .quantity {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color:red;
-        font-size: .3rem;
-        padding: 0 .5rem;
       }
     }
     .total-Wrapper {

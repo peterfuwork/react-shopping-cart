@@ -2,7 +2,7 @@ import React from 'react';
 
 const CartItems = (props) => {
     return (
-        <div className="col-sm-12 shoppingCartItem" key={props.i}>
+        <div className="shoppingCartItem" key={props.i}>
             <a className="delete-btn" href="#" onClick={(e) => props.onClickDelete(e, props.product, props.i)}>X</a>
             <img src={props.product.img} className="img" />
             <div className="name">{props.product.name}</div>
