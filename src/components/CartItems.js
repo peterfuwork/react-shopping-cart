@@ -7,6 +7,7 @@ const CartItems = (props) => {
             <img src={props.product.img} className="img" />
             <div className="name">{props.product.name}</div>
             <div className="price">${props.product.priceInCents}</div>
+            <div className="quantity">X{props.product.inputQuantity}</div>
         </div>
     );
 }

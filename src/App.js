@@ -19,37 +19,53 @@ class App extends Component {
           { id: 48, img:"https://dl.dropboxusercontent.com/s/c3chx84zxf3yg5r/favorite_activity_summer.jpg?dl=0", name: 'Awesome Leather Shoes', priceInCents: 3990.99, quantity: 13 },
       ],
       shoppingCart:[],
-      total: 0
+      total: 0,
+      inputQuantity: ""
     }
   }
 
-  onClickAdd = (e, {id,img,name,priceInCents,quantity}) => {
+  onClickAdd = (e, {id,img,name,priceInCents}) => {
     e.preventDefault();
     var newItem = {
       id,
       img,
       name,
       priceInCents,
-      quantity
+      inputQuantity: this.state.inputQuantity
     }
+    var newTotal = newItem.priceInCents*newItem.inputQuantity;
     this.setState({
       shoppingCart: [...this.state.shoppingCart, newItem],
-      total: this.state.total + newItem.priceInCents,
+      total: this.state.total + newTotal,
+      inputQuantity: ""
     })
   }
 
-  onClickDelete = (e, product, i) => {
+  onClickDelete = (e, item, i) => {
     e.preventDefault();
     var array = [...this.state.shoppingCart];
-    var i = array.indexOf(product);
+    var i = array.indexOf(item);
     if (i > -1) {
       array.splice(i, 1);
     }
-    var newTotal = this.state.total - product.priceInCents;
+    var newTotal = this.state.total - item.priceInCents*item.inputQuantity;
+    if(newTotal<0) {
+      newTotal = 0;
+      this.setState({
+        total: newTotal
+      })
+    }
     this.setState({
       shoppingCart: array,
       total: newTotal
     })
+  }
+
+  onChangeQuantity = (e) => {
+      e.preventDefault();
+      this.setState({
+        inputQuantity: e.target.value
+      })
   }
   
   render() {
@@ -60,9 +76,10 @@ class App extends Component {
           products={this.state.products} 
           onClickAdd={this.onClickAdd}
           onClickDelete={this.onClickDelete}
-          onInputChange={this.onInputChange}
+          onChangeQuantity={this.onChangeQuantity}
           shoppingCart={this.state.shoppingCart}
-          total={this.state.total} />
+          total={this.state.total}
+          inputQuantity={this.state.inputQuantity} />
         <ProductFooter />
       </div>
     );

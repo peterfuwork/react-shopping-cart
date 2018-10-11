@@ -6,6 +6,13 @@
     padding-left: 15px;
     padding-right: 15px;
     max-width: 980px;
+    @media(max-width:767px) {
+      margin: 0 1rem;
+    }
+    .quantityForm {
+      font-size: 1.4rem;
+      margin: 1rem 0;
+    }
     .collection-item {
       margin: 0 0 1rem 0;
       .item{
@@ -99,11 +106,15 @@
         align-items: center;
         font-size: .8rem;
       }
+      .quantity {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:red;
+        font-size: .3rem;
+        padding: 0 .5rem;
+      }
     }
-    @media(max-width:767px) {
-      margin: 0 1rem;
-    }
-
     .total-Wrapper {
       margin-top: 1rem;
       text-align: right;

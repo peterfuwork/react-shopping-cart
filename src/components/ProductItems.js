@@ -36,11 +36,12 @@ const ProductItems = (props) => {
                     <section className="col-sm-4">
                         <div className="row">
                         <div className="text-center">
-                            <form>
+                            <form className="quantityForm">
                                 <input
-                                    type="text"
-                                    placeholder="quantity" />
-                                <input type="button" value="add" />
+                                    type="number"
+                                    placeholder="Quantity"
+                                    value={props.inputQuantity}
+                                    onChange={props.onChangeQuantity} />
                             </form>
                         </div>
                             {selectedItems}
