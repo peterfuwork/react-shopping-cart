@@ -14,6 +14,17 @@ const ProductItems = (props) => {
             );
         });
 
+        const newProducts = props.newProducts.map((product) => {
+            return (
+                <ProductItem 
+                    onClickAdd={props.onClickAdd} 
+                    product={product}
+                    shoppingCart={props.shoppingCart}
+                    key={product.id}
+                    inputQuantity={props.inputQuantity} />
+            );
+        });
+
         const selectedItems = props.shoppingCart.map((product, i) => {
             return (
                 <CartItems
@@ -31,7 +42,8 @@ const ProductItems = (props) => {
                 <section className="row">
                     <section className="col-sm-8">
                         <div className="row">
-                            {products}
+                            {newProducts}
+                            {/* {props.newProducts.length === 0 ? products : newProducts} */}
                         </div>
                     </section>
                     <section className="col-sm-4 shoppingCartPanel">
@@ -48,7 +60,7 @@ const ProductItems = (props) => {
                                     onChange={props.onChangeQuantity} />
                             </form>
                         </div>
-                        <div class="col-sm-12">
+                        <div className="col-sm-12">
                             {selectedItems}
                         </div>
                         </div>
