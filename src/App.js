@@ -22,7 +22,7 @@ class App extends Component {
       shoppingCart:[],
       total: 0,
       inputQuantity: "",
-      newProducts: products 
+      filterProducts: products 
     }
   }
 
@@ -72,6 +72,9 @@ class App extends Component {
 
   findMatches(wordToMatch, products) {
     return products.filter(product => {
+      if (wordToMatch === '\\') {
+        wordToMatch = "";
+      }
       // here we need to figure out if the title or article number matches what was searched
       const regex = new RegExp(wordToMatch, 'gi');
       return product.id.toString().match(regex) || product.name.match(regex);
@@ -84,8 +87,8 @@ class App extends Component {
     const products = this.state.products;
     const matchArray = this.findMatches(value, products);
     console.log(matchArray)
-    this.setState({
-      newProducts: matchArray
+    this.setState({ 
+      filterProducts: matchArray
     })
     // const html = matchArray.map(product => {
     //   const regex = new RegExp(value, 'gi');
@@ -99,16 +102,47 @@ class App extends Component {
     // }).join('');
     // suggestions.innerHTML = html;
   }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = (e) => {
+      const navs = e.target.querySelector('.navs');
+      const navsHeight = e.target.querySelector('.navs').offsetHeight;
+      const gLogoHeight = e.target.querySelector('.g-logo').offsetHeight;
+      const shoppingPanel = e.target.querySelector('.shoppingCartPanel');
+      const body = e.target.querySelector('body');
+
+      if (window.scrollY >= gLogoHeight) {
+        body.style.paddingTop = navs.offsetHeight + 'px';
+        body.classList.add('fixed');
+        shoppingPanel.classList.add('fixed');
+        shoppingPanel.style.top = navsHeight + gLogoHeight + 'px';
+      } else {
+        body.classList.remove('fixed');
+        body.style.paddingTop = 0;
+        shoppingPanel.classList.remove('fixed');
+        shoppingPanel.style.top = 0;
+      }
+  }
+
+  onScrollChange = (e) => {
+    const password = e.target.querySelector('input[type="password"]').value;
+  }
   
   render() {
     return (
       <div className="App">
+      <div className="g-logo">
+        <img src="https://s3-us-west-2.amazonaws.com/galvanize.com-dev/galvanize-logo.svg" />
+      </div>
         <ProductHeader
-          onChangeSearch={this.onChangeSearch}
-         />
+            onChangeSearch={this.onChangeSearch}
+          />
         <ProductItems 
           products={this.state.products}
-          newProducts={this.state.newProducts}
+          filterProducts={this.state.filterProducts}
           onClickAdd={this.onClickAdd}
           onClickDelete={this.onClickDelete}
           onChangeQuantity={this.onChangeQuantity}

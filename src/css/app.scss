@@ -6,6 +6,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  &.fixed {
+    .navs {
+      position: fixed;
+      box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+      z-index: 2;
+    }
+  }
 }
 
 code {
@@ -14,6 +21,10 @@ code {
 }
 
 .App {
+  .g-logo {
+    text-align: center;
+    margin: 1rem 0;
+  }
   @import 'navs';
   @import 'container';
   @import 'footer';

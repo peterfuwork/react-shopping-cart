@@ -3,18 +3,8 @@ import ProductItem from './ProductItem';
 import CartItems from './CartItems';
 
 const ProductItems = (props) => {
-        const products = props.products.map((product) => {
-            return (
-                <ProductItem 
-                    onClickAdd={props.onClickAdd} 
-                    product={product}
-                    shoppingCart={props.shoppingCart}
-                    key={product.id}
-                    inputQuantity={props.inputQuantity} />
-            );
-        });
 
-        const newProducts = props.newProducts.map((product) => {
+        const filterProducts = props.filterProducts.map((product) => {
             return (
                 <ProductItem 
                     onClickAdd={props.onClickAdd} 
@@ -42,8 +32,7 @@ const ProductItems = (props) => {
                 <section className="row">
                     <section className="col-sm-8">
                         <div className="row">
-                            {newProducts}
-                            {/* {props.newProducts.length === 0 ? products : newProducts} */}
+                            {filterProducts}
                         </div>
                     </section>
                     <section className="col-sm-4 shoppingCartPanel">
